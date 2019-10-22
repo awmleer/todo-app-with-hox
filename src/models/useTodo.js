@@ -13,8 +13,17 @@ export function useTodo() {
     nextTodoIdRef.current++;
   }
 
-  function toggleTodo() {
-
+  function toggleTodo(id) {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        }
+      } else {
+        return todo
+      }
+    }))
   }
 
   return {
