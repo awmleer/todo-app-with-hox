@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useMemo } from 'react';
+import { VISIBILITY_FILTERS } from '../constants';
 
 export function useTodo() {
   const nextTodoIdRef = useRef(0);
@@ -26,9 +27,24 @@ export function useTodo() {
     }))
   }
 
+  const [activeFilter, setActiveFilter] = useState(VISIBILITY_FILTERS.ALL);
+
+  const filteredTodos = useMemo(() => {
+    switch (activeFilter) {
+      case VISIBILITY_FILTERS.ALL:
+        return todos;
+      case VISIBILITY_FILTERS.INCOMPLETE:
+        return todos.filter(todo => !todo.completed);
+      case VISIBILITY_FILTERS.COMPLETED:
+        return todos.filter(todo => todo.completed);
+    }
+  }, [todos, activeFilter])
+
   return {
-    todos,
+    todos: filteredTodos,
     addTodo,
     toggleTodo,
+    activeFilter,
+    setActiveFilter,
   };
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import AddTodo from './components/AddTodo';
 import TodoList from './components/TodoList';
+import VisibilityFilters from './components/VisibilityFilters';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <h1>Todo List</h1>
       <AddTodo />
       <TodoList />
-      {/* <VisibilityFilters /> */}
+      <VisibilityFilters />
     </div>
   );
 }
