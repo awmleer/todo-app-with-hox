@@ -1,10 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import {setModel} from 'hox';
-import {useTodo} from './models/useTodo';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { HoxRoot } from "hox";
 
-setModel('todo', useTodo);
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <HoxRoot>
+    <App />
+  </HoxRoot>,
+  document.getElementById("root")
+);

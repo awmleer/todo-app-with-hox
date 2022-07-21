@@ -1,9 +1,9 @@
-import React from 'react';
-import { useModel } from 'hox';
-import Todo from './Todo';
+import React from "react";
+import Todo from "./Todo";
+import { useTodoStore } from "../models/todo";
 
 export default function TodoList() {
-  const {todos} = useModel('todo')
+  const { todos } = useTodoStore();
   return (
     <ul className="todo-list">
       {todos && todos.length
@@ -12,5 +12,5 @@ export default function TodoList() {
           })
         : "No todos, yay!"}
     </ul>
-  )
+  );
 }
